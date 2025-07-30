@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="reg.css">
+    <!-- Tailwind CSS CDN (for utility classes, though most styling is in style.css) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex flex-col min-h-screen">
+    <!-- Header (Optional, but good for consistency) -->
+    <header class="header shadow-lg p-4">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <h1 class="text-3xl font-bold mb-4 md:mb-0">Student Portal</h1>
+            <nav class="flex flex-wrap justify-center md:justify-end space-x-4">
+                <a href="dashboard.html" class="nav-link">Home</a>
+                <a href="aboutus.html" class="nav-link">About</a>
+                <a href="index.html" class="nav-link">Login</a>
+                <button id="theme-toggle" class="nav-link ml-4">Toggle Theme</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content - Registration Form -->
+    <main class="flex-grow container mx-auto p-6 flex items-center justify-center">
+        <div class="registration-card p-8 rounded-lg shadow-md w-full max-w-lg">
+            <h2 class="text-4xl font-extrabold text-center mb-6">Student Registration</h2>
+            <form class="space-y-6">
+                <div>
+                    <label for="fullName" class="block text-sm font-medium mb-2">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Enter name" class="form-input" required>
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium mb-2">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Entre email" class="form-input" required>
+                </div>
+                <div>
+                    <label for="password" class="block text-sm font-medium mb-2">Password</label>
+                    <input type="password" id="password" name="password" placeholder="********" class="form-input" required>
+                </div>
+                <div>
+                    <label for="confirmPassword" class="block text-sm font-medium mb-2">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="********" class="form-input" required>
+                </div>
+                <div>
+                    <label for="studentId" class="block text-sm font-medium mb-2">Student ID (Optional)</label>
+                    <input type="text" id="studentId" name="studentId" placeholder="Entre student id" class="form-input">
+                </div>
+                <div>
+                    <label for="dob" class="block text-sm font-medium mb-2">Date of Birth</label>
+                    <input type="date" id="dob" name="dob" class="form-input" required>
+                </div>
+               
+                <div class="flex items-center">
+                    <input type="checkbox" id="terms" name="terms" class="h-4 w-4 text-indigo-600 border-gray-300 rounded" required>
+                    <label for="terms" class="ml-2 block text-sm">I agree to the <a href="#" class="text-blue-600 hover:underline">Terms and Conditions</a></label>
+                </div>
+                <button type="submit" class="form-button w-full">Create Account</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer (Optional, but good for consistency) -->
+    <footer class="footer p-4 text-center mt-auto">
+        <div class="container mx-auto">
+            <p>&copy; 2025 Student Portal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Get the theme toggle button
+        const themeToggle = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement; // Get the <html> element
+
+        // Function to set the theme
+        function setTheme(theme) {
+            htmlElement.className = theme; // Set the class on <html>
+            localStorage.setItem('theme', theme); // Store preference
+        }
+
+        // Check for saved theme preference on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'light'; // Default to light
+            setTheme(savedTheme);
+        });
+
+        // Event listener for the theme toggle button
+        themeToggle.addEventListener('click', () => {
+            if (htmlElement.classList.contains('light')) {
+                setTheme('dark');
+            } else {
+                setTheme('light');
+            }
+        });
+
+        // Basic form validation (client-side)
+        document.querySelector('form').addEventListener('submit', function(event) {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const terms = document.getElementById('terms');
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!'); // Using alert for simplicity, replace with custom modal in production
+                event.preventDefault();
+            }
+
+            if (!terms.checked) {
+                alert('You must agree to the Terms and Conditions!'); // Using alert for simplicity
+                event.preventDefault();
+            }
+            // You can add more validation logic here for email format, password strength etc.
+        });
+    </script>
+</body>
+</html>

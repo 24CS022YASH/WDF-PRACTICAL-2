@@ -1,0 +1,202 @@
+/* style.css */
+
+/* Custom CSS for Inter font and theme variables */
+body {
+    font-family: 'Inter', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light Theme (default) */
+.light {
+    --bg-color: #f8f8f8;
+    --text-color: #333;
+    --primary-color: #4f46e5;
+    --secondary-color: #6366f1;
+    --card-bg: #ffffff;
+    --border-color: #e5e7eb;
+}
+
+/* Dark Theme */
+.dark {
+    --bg-color: #1a202c;
+    --text-color: #e2e8f0;
+    --primary-color: #818cf8;
+    --secondary-color: #a78bfa;
+    --card-bg: #2d3748;
+    --border-color: #4a5568;
+}
+
+/* Base Body Styling */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Header Styling */
+.header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 {
+    font-size: 2.25rem; /* text-3xl */
+    font-weight: 700; /* font-bold */
+    margin-bottom: 1rem;
+}
+
+.header nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem; /* space-x-4 */
+}
+
+.nav-link {
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s ease;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Main Content Area */
+main {
+    flex-grow: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem; /* p-6 */
+    display: flex; /* Added for centering content */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+}
+
+/* Registration Card Styling */
+.registration-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 2rem; /* p-8 */
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-md */
+    width: 100%;
+    max-width: 500px; /* max-w-lg */
+}
+
+.registration-card h2 {
+    font-size: 2.25rem; /* text-4xl */
+    font-weight: 800; /* font-extrabold */
+    text-align: center;
+    margin-bottom: 1.5rem; /* mb-6 */
+}
+
+/* Form Element Styling */
+.space-y-6 > *:not(:last-child) {
+    margin-bottom: 1.5rem; /* space-y-6 */
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    transition: border-color 0.2s ease;
+    box-sizing: border-box; /* Ensures padding doesn't increase total width */
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2); /* Focus ring */
+}
+
+.form-button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s ease;
+    width: 100%; /* w-full */
+    font-weight: 600; /* semi-bold */
+    cursor: pointer;
+    border: none; /* Remove default button border */
+}
+
+.form-button:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Checkbox specific styling */
+input[type="checkbox"] {
+    height: 1rem; /* h-4 */
+    width: 1rem; /* w-4 */
+    color: #4f46e5; /* text-indigo-600 */
+    border-color: #d1d5db; /* border-gray-300 */
+    border-radius: 0.25rem; /* rounded */
+}
+
+/* Footer Styling */
+.footer {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    margin-top: auto;
+}
+
+/* Responsive Adjustments */
+@media (min-width: 768px) { /* md breakpoint */
+    .header .container {
+        flex-direction: row;
+    }
+
+    .header h1 {
+        margin-bottom: 0;
+    }
+
+    .header nav {
+        justify-content: flex-end;
+    }
+}
+
+@media (max-width: 640px) { /* sm breakpoint */
+    .header h1 {
+        font-size: 1.875rem; /* text-2xl for smaller screens */
+    }
+
+    .header nav {
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+    }
+
+    .nav-link {
+        width: 100%;
+        text-align: center;
+    }
+
+    .registration-card {
+        padding: 1.5rem; /* Smaller padding on mobile */
+    }
+
+    .registration-card h2 {
+        font-size: 2rem; /* Smaller heading on mobile */
+    }
+}
